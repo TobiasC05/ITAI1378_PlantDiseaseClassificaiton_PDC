@@ -8,7 +8,7 @@
   "Can you compare our two project ideas, Plant Disease Classification and Soccer datasets, based on dataset availability, technical difficulty, training time, evaluation methods, and suitability for a semester computer vision project?"
 
 - **AI Suggestion**:  
-  The AI suggested comparing the projects using common criteria instead of selecting one based only on interest. It recommended considering the availability and quality of labeled images, the number of object classes, expected computing requirements, project scope, and whether the final results could be clearly demonstrated. In this case, we chose the Plant Disease Classification due to the easy-to-read dataset and information.
+  The AI suggested comparing the projects using common criteria instead of selecting one based only on interest. It recommended considering the availability and quality of labeled images, the number of object classes, expected computing requirements, project scope, and whether the final results could be clearly demonstrated. In this case, we chose Plant Disease Classification due to the easy-to-read dataset and information.
 
 - **What I Learned**:  
   I learned that a good project idea must be realistic within the available time and resources. A more complicated project is not always better if the dataset is difficult to prepare or the model requires excessive training time.
