@@ -88,9 +88,105 @@
 
 ---
 
+## 6. Identifying the Lowest-Performing Classes
 
-### How I Applied It
+* **Date**: July 24, 2026
 
-We added a prediction function that processes an uploaded leaf image and returns the predicted plant condition and its confidence score.
+* **Tool Used**: ChatGPT
+
+* **Question Asked**:
+  "How can we identify the lowest-performing PlantVillage classes from the classification report?"
+
+* **AI Suggestion**:
+  ChatGPT suggested reviewing the precision, recall, F1-score, and support for all 38 classes and sorting the classes by F1-score from lowest to highest. It also recommended checking the confusion matrix to determine which plant-disease classes are most often confused with one another.
+
+* **What I Learned**:
+  I learned that overall accuracy does not show how well the model performs on every class. A class with a low F1-score may have weak precision, weak recall, or both, so the per-class results are necessary for identifying specific weaknesses.
+
+* **How I Applied It**:
+  We used the classification report to focus on the classes with the lowest F1-scores and reviewed their precision, recall, support, and confusion patterns before suggesting model improvements.
+
+---
+
+## 7. Using a Working PlantVillage Dataset Mirror
+
+* **Date**: July 24, 2026
+
+* **Tool Used**: ChatGPT
+
+* **Question Asked**:
+  "Why did the original PlantVillage dataset fail to load in Colab, and how can we use a working dataset mirror?"
+
+* **AI Suggestion**:
+  ChatGPT explained that a dataset may fail to load in Colab when the source is unavailable, its download path or permissions have changed, or its file structure is incompatible with the loading code. It suggested using an accessible mirror that preserves the PlantVillage class folders, then verifying the class names, image counts, and directory structure before training.
+
+* **What I Learned**:
+  I learned that a failed dataset source does not necessarily mean the model code is incorrect. A dataset mirror can be used when it contains the same required images and labels, but the replacement source should be checked carefully for completeness and consistency.
+
+* **How I Applied It**:
+  We replaced the unavailable dataset source with a working PlantVillage mirror and confirmed that Colab could read the class folders and prepare the images for the 38-class classification model.
+
+---
+
+## 8. Comparing Macro and Weighted F1-Scores
+
+* **Date**: July 24, 2026
+
+* **Tool Used**: ChatGPT
+
+* **Question Asked**:
+  "What is the difference between macro F1-score and weighted F1-score for our 38-class model?"
+
+* **AI Suggestion**:
+  ChatGPT explained that macro F1 calculates the F1-score for each class and gives all 38 classes equal importance when averaging. Weighted F1 also averages the class F1-scores, but it gives more influence to classes with more test images.
+
+* **What I Learned**:
+  I learned that macro F1 is useful for determining whether the model performs consistently across all classes, especially smaller classes. Weighted F1 reflects performance according to class frequency and can remain high even when some less common classes perform poorly.
+
+* **How I Applied It**:
+  We reported macro F1 as an important project metric and compared it with weighted F1 and the per-class classification report to avoid judging the model only by overall accuracy.
+
+---
+
+## 9. Improving Performance on Unfamiliar Plants
+
+* **Date**: July 24, 2026
+
+* **Tool Used**: ChatGPT
+
+* **Question Asked**:
+  "How could we improve the model’s performance on unfamiliar plants without changing the 38 PlantVillage output classes?"
+
+* **AI Suggestion**:
+  ChatGPT suggested improving generalization by using more varied training images, stronger but realistic augmentation, field-style backgrounds, different lighting conditions, and fine-tuning with additional examples that still belong to the existing 38 classes. It also suggested using confidence thresholds to warn users when a prediction may be unreliable.
+
+* **What I Learned**:
+  I learned that the model can become more robust without adding output classes by increasing the visual variety within the existing classes. However, a plant or disease outside the 38 trained classes cannot be reliably identified as a new category by the current classifier.
+
+* **How I Applied It**:
+  We identified realistic augmentation, more diverse images, additional fine-tuning, and low-confidence warnings as possible future improvements while keeping the model’s output layer fixed at 38 classes.
+
+---
+
+## 10. Understanding the Effect of Class Imbalance
+
+* **Date**: July 24, 2026
+
+* **Tool Used**: ChatGPT
+
+* **Question Asked**:
+  "How could class imbalance affect the model’s predictions?"
+
+* **AI Suggestion**:
+  ChatGPT explained that classes with many training images can influence the model more strongly than classes with fewer images. This may cause the model to predict common classes more often and produce lower recall or F1-scores for underrepresented classes.
+
+* **What I Learned**:
+  I learned that a model can have high overall accuracy while still performing poorly on minority classes. Per-class metrics and macro F1 are important for detecting this problem.
+
+* **How I Applied It**:
+  We reviewed the number of images in each class and considered class-weighted loss, balanced sampling, targeted augmentation, and per-class evaluation as possible ways to reduce the effect of imbalance.
+
+---
+
 
 ---
