@@ -90,7 +90,7 @@
 
 ## 6. Identifying the Lowest-Performing Classes
 
-* **Date**: July 24, 2026
+* **Date**: July 22, 2026
 
 * **Tool Used**: ChatGPT
 
@@ -110,7 +110,7 @@
 
 ## 7. Using a Working PlantVillage Dataset Mirror
 
-* **Date**: July 24, 2026
+* **Date**: July 22, 2026
 
 * **Tool Used**: ChatGPT
 
@@ -130,7 +130,7 @@
 
 ## 8. Comparing Macro and Weighted F1-Scores
 
-* **Date**: July 24, 2026
+* **Date**: July 22, 2026
 
 * **Tool Used**: ChatGPT
 
@@ -150,7 +150,7 @@
 
 ## 9. Improving Performance on Unfamiliar Plants
 
-* **Date**: July 24, 2026
+* **Date**: July 22, 2026
 
 * **Tool Used**: ChatGPT
 
@@ -170,7 +170,7 @@
 
 ## 10. Understanding the Effect of Class Imbalance
 
-* **Date**: July 24, 2026
+* **Date**: July 22, 2026
 
 * **Tool Used**: ChatGPT
 
