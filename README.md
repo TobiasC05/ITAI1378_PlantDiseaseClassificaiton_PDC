@@ -254,7 +254,7 @@ The final project should also include:
 
 ## Demo Video
 
-[![Watch/download the Pixel Predators Demo](Media/thumbnail.png)](.Media/Demo.mp4)
+[![Watch/download the Pixel Predators Demo](Media/Thumbnail.png)](.Media/Demo.mp4)
 
 ## AI Usage
 
