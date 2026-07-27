@@ -254,7 +254,8 @@ The final project should also include:
 
 ## Demo Video
 
-[Watch or download the Pixel Predators Demo](./Demo.mp4)
+[![Watch/download the Pixel Predators Demo](./Media/Screenshot 2026-07-27 183325.png)](.Media/Demo.mp4)
+
 ## AI Usage
 
 The team used ChatGPT to help review the project requirements, organize the proposal, improve grammar, explain computer vision concepts, revise the milestone plan, and prepare presentation notes.
