@@ -55,18 +55,19 @@
 ## 4. Selecting ResNet50 and Transfer Learning
 
 - **Date**: July 10, 2026
-- **Tool Used**: Claude
+- **Tool Used**: ChatGPT
 - **Question Asked**:  
-  "Can you explain whether ResNet50 transfer learning is appropriate for our PlantVillage project?"
+  "How can a plant disease detection model distinguish between actual disease symptoms and natural leaf patterns, insect damage, or lighting effects?"
 
 - **What the AI Suggested**:  
-  Claude explained that ResNet50 is already trained on ImageNet and has learned useful general image features. It suggested freezing most of the pretrained layers and replacing or fine-tuning the final classifier for the plant-disease categories.
+  A plant disease model can improve by training on diverse images, including healthy leaves, insect damage, natural spots, shadows, and different lighting. It can also use confidence scores or an “unknown” option when the image does not match any trained class.
+
 
 - **What I Learned**:  
-  I learned that transfer learning allows us to reuse previously learned visual features rather than training a convolutional neural network entirely from the beginning.
+I learned that a plant disease model can confuse natural spots, insect damage, shadows, or lighting changes with disease symptoms. Diverse training images are important for improving real-world accuracy.
 
-- **How I Applied It**:  
-  We selected ResNet50 as our proposed feature extractor and planned to fine-tune the final classification layers using PyTorch and torchvision.
+**How I Applied It:**
+We tested our model with a healthy polka dot Begonia and used the incorrect prediction as a failure case. We also identified adding more real-world images and an “unknown” option as possible future improvements.
 
 ---
 
