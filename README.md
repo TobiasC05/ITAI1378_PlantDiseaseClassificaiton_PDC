@@ -251,7 +251,7 @@ The final project should also include:
 - A final demonstration and presentation
 
 
-## Demo Video
+
 ## Demo Video
 
 [Watch or download the Pixel Predators Demo](./Demo.mp4)
