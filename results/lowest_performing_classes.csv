@@ -1,0 +1,9 @@
+Rank,Class,F1-score,Support
+1,Tomato___Early_blight,0.8984,90
+2,Tomato___Bacterial_spot,0.9231,90
+3,Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot,0.9333,90
+4,Corn_(maize)___Northern_Leaf_Blight,0.9333,90
+5,Tomato___Late_blight,0.9392,90
+6,Tomato___Target_Spot,0.9444,90
+7,Tomato___Septoria_leaf_spot,0.9508,90
+8,Potato___Late_blight,0.9535,90
