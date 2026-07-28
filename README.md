@@ -230,25 +230,167 @@ The complete PlantVillage dataset may require more memory, storage, or training 
 
 The project is designed to be completed using public data, open-source software, and free computing resources.
 
-## Expected Final Application
+## Training Setup
 
-The final proof of concept should allow a user to:
+Framework: PyTorch
 
-1. Upload a plant leaf image
-2. View the uploaded image
-3. Process the image using the trained ResNet50 model
-4. Receive a predicted crop-condition label
-5. View the model confidence score
+Model: ResNet50
 
-The final project should also include:
+Loss function: Cross-entropy loss
 
-- A working Gradio interface
-- Model evaluation results
-- A confusion matrix
-- Examples of correct predictions
-- Examples of incorrect predictions
-- Updated GitHub documentation
-- A final demonstration and presentation
+Optimizer: Adam
+
+Image size: 224 × 224 pixels
+
+Output classes: 38
+
+Interface: Gradio
+
+Training environment: Google Colab
+
+Image Preprocessing
+
+The images were prepared using the following steps:
+
+Resize each image to 224 × 224 pixels
+
+Convert the image into a PyTorch tensor
+
+Normalize it using ImageNet mean and standard deviation
+
+Apply augmentation only to training images
+
+Divide the data into training, validation, and test groups
+
+Training augmentation included small rotations, horizontal flipping, cropping, and color changes. These changes helped the model learn from more varied examples.
+
+Final Results
+
+The model was evaluated on 3,269 held-out test images.
+
+Metric
+
+Final Result
+
+Test accuracy
+
+97.71%
+
+Macro F1-score
+
+0.9773
+
+Weighted F1-score
+
+0.9770
+
+Number of classes
+
+38
+
+Test images
+
+3,269
+
+Lowest-performing class
+
+Tomato Early Blight
+
+Lowest class F1-score
+
+0.8984
+
+The final model exceeded our original target of at least 90% test accuracy and a macro F1-score of at least 0.88.
+
+Lowest-Performing Class
+
+The lowest-performing class was Tomato___Early_blight.
+
+Precision: 0.8660
+
+Recall: 0.9333
+
+F1-score: 0.8984
+
+Support: 90 images
+
+The model likely confused Tomato Early Blight with other tomato diseases that have similar brown spots, yellow areas, and damaged leaf patterns.
+
+Successful Prediction
+
+During the demo, the model correctly classified a healthy leaf as:
+
+Blueberry___healthy
+
+The application also returned a HEALTHY status and a high confidence score.
+
+Failure Case
+
+We tested the model with a healthy polka dot Begonia. The model incorrectly classified it as a diseased PlantVillage class.
+
+This happened because:
+
+Begonia is not one of the 38 supported classes
+
+Its natural white spots resembled disease symptoms
+
+The image had a real-world background
+
+The model was required to choose one of its known classes
+
+This failure demonstrates domain shift and the limitations of closed-set classification.
+
+Challenges and Fixes
+
+Dataset Loading Problem
+
+One PlantVillage dataset source did not load correctly in Google Colab because of a configuration problem.
+
+Fix: We used a working Hugging Face dataset mirror and verified that it contained 38 classes.
+
+Class Imbalance
+
+Some crop-condition classes had more images than others.
+
+Fix: We limited the maximum number of images selected from each class to create more balanced training, validation, and test subsets.
+
+Real-World Images
+
+PlantVillage images usually have simple backgrounds, while real phone photos may contain shadows, hands, pots, and multiple leaves.
+
+Fix: We used image augmentation and included a real-world Begonia image as an honest failure case.
+
+Limitations
+
+The model supports only the 38 PlantVillage classes
+
+It may make incorrect predictions for unsupported plant species
+
+Real-world backgrounds and lighting can reduce performance
+
+A high confidence score does not guarantee a correct prediction
+
+The system does not provide professional treatment advice
+
+The model does not currently have an “unknown” output class
+
+Future Improvements
+
+Future versions could:
+
+Add more real-world leaf images
+
+Include ornamental plants and naturally spotted healthy leaves
+
+Add an unknown or unsupported-image option
+
+Use leaf segmentation to reduce background distractions
+
+Identify the plant species before predicting its condition
+
+Improve confidence calibration
+
+Test the model with outdoor farm images
 
 ## Final Presentation
 
