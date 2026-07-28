@@ -229,168 +229,188 @@ The complete PlantVillage dataset may require more memory, storage, or training 
 | **Total Estimated Cost** | **$0** |
 
 The project is designed to be completed using public data, open-source software, and free computing resources.
+### Training Setup
 
-## Training Setup
+- **Model:** ResNet50
+- **Loss function:** Cross-entropy loss
+- **Optimizer:** Adam
+- **Input image size:** 224 × 224 pixels
+- **Number of output classes:** 38
+- **Training environment:** Google Colab
+- **User interface:** Gradio
 
-Framework: PyTorch
+## Dataset
 
-Model: ResNet50
+We used the PlantVillage dataset through the following Hugging Face dataset mirror:
 
-Loss function: Cross-entropy loss
+```text
+BrandonFors/Plant-Diseases-PlantVillage-Dataset
+```
 
-Optimizer: Adam
+The dataset contains healthy and diseased plant leaf images across 38 crop-condition classes. Each label identifies both the plant type and its condition.
 
-Image size: 224 × 224 pixels
+Example classes include:
 
-Output classes: 38
+- Apple healthy
+- Apple scab
+- Corn common rust
+- Potato late blight
+- Tomato early blight
+- Tomato healthy
 
-Interface: Gradio
+More dataset information is available in the [`data`](./data) folder.
 
-Training environment: Google Colab
-
-Image Preprocessing
+## Image Preprocessing
 
 The images were prepared using the following steps:
 
-Resize each image to 224 × 224 pixels
+1. Resize each image to 224 × 224 pixels
+2. Convert each image into a PyTorch tensor
+3. Normalize the image using ImageNet values
+4. Apply augmentation to training images
+5. Separate the data into training, validation, and test groups
 
-Convert the image into a PyTorch tensor
+Training augmentation included:
 
-Normalize it using ImageNet mean and standard deviation
+- Horizontal flipping
+- Small rotations
+- Random cropping
+- Brightness adjustments
+- Color adjustments
 
-Apply augmentation only to training images
+Augmentation was applied only to training images. Validation, test, and uploaded images were resized and normalized without training augmentation.
 
-Divide the data into training, validation, and test groups
+## Final Results
 
-Training augmentation included small rotations, horizontal flipping, cropping, and color changes. These changes helped the model learn from more varied examples.
+The final model was evaluated on 3,269 held-out test images.
 
-Final Results
-
-The model was evaluated on 3,269 held-out test images.
-
-Metric
-
-Final Result
-
-Test accuracy
-
-97.71%
-
-Macro F1-score
-
-0.9773
-
-Weighted F1-score
-
-0.9770
-
-Number of classes
-
-38
-
-Test images
-
-3,269
-
-Lowest-performing class
-
-Tomato Early Blight
-
-Lowest class F1-score
-
-0.8984
+| Metric | Final Result |
+|---|---:|
+| Test accuracy | **97.71%** |
+| Macro F1-score | **0.9773** |
+| Weighted F1-score | **0.9770** |
+| Number of classes | **38** |
+| Number of test images | **3,269** |
+| Lowest-performing class | **Tomato Early Blight** |
+| Lowest class F1-score | **0.8984** |
 
 The final model exceeded our original target of at least 90% test accuracy and a macro F1-score of at least 0.88.
 
-Lowest-Performing Class
+## Lowest-Performing Class
 
-The lowest-performing class was Tomato___Early_blight.
+The lowest-performing class was:
 
-Precision: 0.8660
+```text
+Tomato___Early_blight
+```
 
-Recall: 0.9333
+Its results were:
 
-F1-score: 0.8984
+- **Precision:** 0.8660
+- **Recall:** 0.9333
+- **F1-score:** 0.8984
+- **Support:** 90 images
 
-Support: 90 images
+Tomato Early Blight may be confused with other tomato diseases because several conditions have similar brown spots, yellow areas, and damaged leaf patterns.
 
-The model likely confused Tomato Early Blight with other tomato diseases that have similar brown spots, yellow areas, and damaged leaf patterns.
+## Successful Prediction
 
-Successful Prediction
+During the demonstration, the model correctly classified a healthy leaf as:
 
-During the demo, the model correctly classified a healthy leaf as:
-
+```text
 Blueberry___healthy
+```
 
-The application also returned a HEALTHY status and a high confidence score.
+The application returned a HEALTHY status and a high confidence score. This example showed that the complete process worked from image upload to final prediction.
 
-Failure Case
+## Failure Case
 
-We tested the model with a healthy polka dot Begonia. The model incorrectly classified it as a diseased PlantVillage class.
+We also tested the model using a healthy polka dot Begonia.
+
+The model incorrectly classified the Begonia as:
+
+```text
+Strawberry___Leaf_scorch
+```
+
+It returned a DISEASED status with high confidence.
 
 This happened because:
 
-Begonia is not one of the 38 supported classes
-
-Its natural white spots resembled disease symptoms
-
-The image had a real-world background
-
-The model was required to choose one of its known classes
+- Begonia is not one of the 38 supported classes
+- Its natural white spots resembled disease symptoms
+- The image had a more complex real-world background
+- The model was required to choose one of its known classes
 
 This failure demonstrates domain shift and the limitations of closed-set classification.
 
-Challenges and Fixes
+## Challenges and Fixes
 
-Dataset Loading Problem
+### Dataset Loading Problem
 
 One PlantVillage dataset source did not load correctly in Google Colab because of a configuration problem.
 
-Fix: We used a working Hugging Face dataset mirror and verified that it contained 38 classes.
+**Fix:** We used a working Hugging Face dataset mirror and verified that it contained 38 classes.
 
-Class Imbalance
+### Class Imbalance
 
-Some crop-condition classes had more images than others.
+Some crop-condition classes contained more images than others.
 
-Fix: We limited the maximum number of images selected from each class to create more balanced training, validation, and test subsets.
+**Fix:** We limited the maximum number of images selected from each class. This created more balanced training, validation, and test subsets.
 
-Real-World Images
+### Real-World Images
 
-PlantVillage images usually have simple backgrounds, while real phone photos may contain shadows, hands, pots, and multiple leaves.
+PlantVillage images usually have simple backgrounds. Real phone photographs may contain shadows, hands, pots, soil, and multiple leaves.
 
-Fix: We used image augmentation and included a real-world Begonia image as an honest failure case.
+**Fix:** We used image augmentation and tested the model with a real-world Begonia image. We included the incorrect prediction as an honest failure case.
 
-Limitations
+## Limitations
 
-The model supports only the 38 PlantVillage classes
+- The model supports only the 38 PlantVillage classes
+- It may produce incorrect predictions for unsupported plant species
+- Real-world backgrounds and lighting may reduce performance
+- A high confidence score does not guarantee a correct prediction
+- The model does not have an unknown output class
+- The system does not provide professional treatment advice
 
-It may make incorrect predictions for unsupported plant species
-
-Real-world backgrounds and lighting can reduce performance
-
-A high confidence score does not guarantee a correct prediction
-
-The system does not provide professional treatment advice
-
-The model does not currently have an “unknown” output class
-
-Future Improvements
+## Future Improvements
 
 Future versions could:
 
-Add more real-world leaf images
+- Add more real-world plant photographs
+- Include ornamental plants
+- Include naturally spotted healthy leaves
+- Add an unknown or unsupported-image option
+- Use leaf segmentation to reduce background distractions
+- Identify the plant species before predicting its condition
+- Improve confidence calibration
+- Test the model using outdoor farm images
 
-Include ornamental plants and naturally spotted healthy leaves
+## Repository Structure
 
-Add an unknown or unsupported-image option
-
-Use leaf segmentation to reduce background distractions
-
-Identify the plant species before predicting its condition
-
-Improve confidence calibration
-
-Test the model with outdoor farm images
+```text
+ITAI1378_PlantDiseaseClassificaiton_PDC/
+├── README.md
+├── requirements.txt
+├── Demo/
+│   └── Demo.mp4
+├── data/
+│   └── README.md
+├── docs/
+│   ├── AI_usage_log.md
+│   └── FP_PixelPredators_Elham_ITAI1378.pdf
+├── notebooks/
+│   └── PixelPredators_ResNet50_38_Class_Final.ipynb
+└── results/
+    ├── README.md
+    ├── metrics_summary.csv
+    ├── per_class_f1_summary.csv
+    ├── lowest_performing_classes.csv
+    ├── metrics_vs_targets.png
+    ├── lowest_performing_classes.png
+    ├── correct_healthy_prediction.png
+    ├── begonia_failure_prediction.png
+    └── prediction_examples.md
 
 ## Final Presentation
 
@@ -399,6 +419,26 @@ Test the model with outdoor farm images
 ## Demo Video
 
 [![Watch/download the Pixel Predators Demo](/Demo/Demo.mp4)
+
+## Requirements
+
+The project uses the following Python packages:
+
+| Package | Purpose |
+|---|---|
+| `torch` | PyTorch deep learning framework used to train and run the ResNet50 model |
+| `torchvision` | Provides ResNet50, image transformations, and dataset utilities |
+| `datasets` | Downloads and loads the PlantVillage dataset from Hugging Face |
+| `transformers` | Supports tools from the Hugging Face ecosystem |
+| `gradio` | Creates the web interface for uploading leaf images |
+| `numpy` | Performs numerical operations and array manipulation |
+| `pandas` | Stores and exports evaluation results |
+| `matplotlib` | Creates charts, training curves, and result visualizations |
+| `scikit-learn` | Calculates accuracy, precision, recall, F1-score, and confusion matrices |
+| `Pillow` | Opens and processes uploaded images |
+| `tqdm` | Displays progress bars during model training |
+
+The actual package list is available in [`requirements.txt`](./requirements.txt).
 
 ## AI Usage
 
