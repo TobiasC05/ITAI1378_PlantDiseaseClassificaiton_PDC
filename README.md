@@ -386,32 +386,6 @@ Future versions could:
 - Improve confidence calibration
 - Test the model using outdoor farm images
 
-## Repository Structure
-
-```text
-ITAI1378_PlantDiseaseClassificaiton_PDC/
-├── README.md
-├── requirements.txt
-├── Demo/
-│   └── Demo.mp4
-├── data/
-│   └── README.md
-├── docs/
-│   ├── AI_usage_log.md
-│   └── FP_PixelPredators_Elham_ITAI1378.pdf
-├── notebooks/
-│   └── PixelPredators_ResNet50_38_Class_Final.ipynb
-└── results/
-    ├── README.md
-    ├── metrics_summary.csv
-    ├── per_class_f1_summary.csv
-    ├── lowest_performing_classes.csv
-    ├── metrics_vs_targets.png
-    ├── lowest_performing_classes.png
-    ├── correct_healthy_prediction.png
-    ├── begonia_failure_prediction.png
-    └── prediction_examples.md
-
 ## Final Presentation
 
 [Download the Pixel Predators Presentation](./docs/FP_PixelPredators_Elham_ITAI1378.pdf)
@@ -447,4 +421,11 @@ The team used ChatGPT to help review the project requirements, organize the prop
 All AI-assisted content was reviewed and revised by the team. The project decisions, technical approach, explanations, and final implementation will reflect the team members' understanding.
 
 AI usage will continue to be recorded in [`docs/AI_usage_log.md`](docs/AI_usage_log.md).
+
+
+
+
+
+
+
 
