@@ -266,20 +266,3 @@ All AI-assisted content was reviewed and revised by the team. The project decisi
 
 AI usage will continue to be recorded in [`docs/AI_usage_log.md`](docs/AI_usage_log.md).
 
-## Project Status
-
-- [x] Team created
-- [x] Blueprint started
-- [x] Project selected
-- [x] Public dataset identified
-- [x] Technical approach selected
-- [x] Success metrics established
-- [x] Risks and backup plans identified
-- [x] Midterm proposal completed
-- [ ] First working model demonstration
-- [ ] Dataset preprocessing
-- [ ] Model training
-- [ ] Model evaluation
-- [ ] Gradio application
-- [ ] Final demonstration
-- [ ] Final presentation
