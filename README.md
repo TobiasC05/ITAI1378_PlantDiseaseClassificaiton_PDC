@@ -19,7 +19,7 @@ We selected Tier 1 because this project uses a pretrained image-classification m
 
 ## Problem Statement
 
-Plant diseases can reduce crop production, damage food supplies, and cause financial losses for farmers and agricultural organizations. Farmers may rely on manual inspection or agricultural experts, which can take time and may not always be available. A fast image-based screening system can help identify possible plant diseases earlier.
+Plant diseases can reduce crop production, damage food supplies, and cause financial losses for farmers as well as agricultural organizations. Farmers may rely on manual inspection or agricultural experts, which can take time and may not always be available. A fast image-based screening system can help identify possible plant diseases earlier.
 
 ## Solution Overview
 
