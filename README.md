@@ -252,7 +252,7 @@ The final project should also include:
 
 ## Final Presentation
 
-[Download the Pixel Predators Presentation](./docs/FP_PixelPredators_Elham_ITAI1378.pdf?raw=1)
+[Download the Pixel Predators Presentation](./docs/FP_PixelPredators_Elham_ITAI1378.pdf)
 
 ## Demo Video
 
