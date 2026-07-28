@@ -1,3 +1,16 @@
+torch
+torchvision
+datasets
+pandas
+numpy
+matplotlib
+scikit-learn
+Pillow
+gradio
+tqdm
+
+
+
 | Package | Purpose |
 | -------------- | ---------------------------------------------------------------------------------- |
 | `torch` | PyTorch deep learning framework used to train and run the ResNet50 model. |
