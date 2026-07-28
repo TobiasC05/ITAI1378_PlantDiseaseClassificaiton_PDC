@@ -1,12 +1,21 @@
 torch
+
 torchvision
+
 datasets
+
 pandas
+
 numpy
+
 matplotlib
+
 scikit-learn
+
 Pillow
+
 gradio
+
 tqdm
 
 
