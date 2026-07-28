@@ -250,7 +250,9 @@ The final project should also include:
 - Updated GitHub documentation
 - A final demonstration and presentation
 
+## Final Presentation
 
+[Download the Pixel Predators Presentation](./docs/FP_PixelPredators_Elham_ITAI1378.pdf?raw=1)
 
 ## Demo Video
 
