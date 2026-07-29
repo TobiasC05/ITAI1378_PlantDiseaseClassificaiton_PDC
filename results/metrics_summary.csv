@@ -5,4 +5,4 @@ Weighted F1-score,Not specified,0.9770,Recorded
 Number of Classes,38,38,Completed
 Held-out Test Images,Not specified,3269,Completed
 Lowest-performing Class,Review weak classes,Tomato___Early_blight,Completed
-Lowest Class F1-score,Not specified,0.8984,Recorded
+Lowest Class F1-score,Not specified,0.9032,Recorded
