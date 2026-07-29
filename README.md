@@ -292,25 +292,24 @@ The final model was evaluated on 3,269 held-out test images.
 | Number of classes | **38** |
 | Number of test images | **3,269** |
 | Lowest-performing class | **Tomato Early Blight** |
-| Lowest class F1-score | **0.8984** |
+| Lowest class F1-score | **0.9032** |
+| Average prediction time | **0.0154 seconds** |
 
 The final model exceeded our original target of at least 90% test accuracy and a macro F1-score of at least 0.88.
+
 
 ## Lowest-Performing Class
 
 The lowest-performing class was:
 
-```text
-Tomato___Early_blight
-```
+`Tomato___Early_blight`
 
 Its results were:
 
-- **Precision:** 0.8660
+- **Precision:** 0.8750
 - **Recall:** 0.9333
-- **F1-score:** 0.8984
+- **F1-score:** 0.9032
 - **Support:** 90 images
-
 Tomato Early Blight may be confused with other tomato diseases because several conditions have similar brown spots, yellow areas, and damaged leaf patterns.
 
 ## Successful Prediction
